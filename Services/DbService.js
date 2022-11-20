@@ -1,5 +1,6 @@
 const { MongoClient } = require('mongodb')
-const uri = "mongodb+srv://lgrayland96:Ni7C9NMWE8kkqm7@cluster0.2wcgjpv.mongodb.net/?retryWrites=true&w=majority"
+const {DB_CONNECTIONSTRING} = require("../Config/Config");
+const uri = DB_CONNECTIONSTRING
 const client = new MongoClient(uri)
 
 const DbService = async() => {
