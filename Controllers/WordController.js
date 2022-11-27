@@ -3,8 +3,11 @@ const {JsonResponse} = require("../Services/JsonResponseService");
 
 module.exports.GetWords = async(req, res) => {
     const db = await DbService()
-    const wordsCollection = await db.collection('Words')
-        .find({"Category": `${req.params.category}`}).toArray()
+
+    const wordsCollection = req.params.category == 'Random'
+        ? await db.collection('Words').find({}).toArray()
+        : await db.collection('Words')
+            .find({"Category": `${req.params.category}`}).toArray()
 
     const words = []
     wordsCollection.forEach((word) => {
