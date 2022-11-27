@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb')
-const {DB_CONNECTIONSTRING} = require("../Config/Config");
-const uri = DB_CONNECTIONSTRING
+require('dotenv').config()
+const uri = process.env.DB_CONNECTIONSTRING.toString()
 const client = new MongoClient(uri)
 
 const DbService = async() => {
@@ -8,8 +8,6 @@ const DbService = async() => {
         return client.db('DescribeTheWord')
     } catch (e) {
         console.error(e)
-    } finally {
-        // await client.close()
     }
 }
 
