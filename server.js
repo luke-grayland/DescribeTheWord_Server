@@ -6,5 +6,3 @@ server.use(express.urlencoded({extended: true}))
 Routes(server)
 
 module.exports = server
-
-
